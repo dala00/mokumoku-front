@@ -1,0 +1,72 @@
+<div *ngIf="user" style="padding: 8px">
+  <h2>プロフィール編集</h2>
+
+  <form>
+    <md-input-container>
+      <input mdInput placeholder="名前" required="true" name="name" [(ngModel)]="user.name">
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="メールアドレス(コメント通知が必要な場合のみ)" name="email" [(ngModel)]="user.email">
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput type="url" placeholder="ブログ等の外部URL" name="url" [(ngModel)]="user.url">
+    </md-input-container>
+
+    <md-input-container>
+      <textarea
+         mdInput
+        name="intro"
+        [(ngModel)]="user.intro"
+        placeholder="紹介文"
+        rows="8"
+      ></textarea>
+    </md-input-container>
+
+    <label style="display:block">アイコン</label>
+    <md-radio-group name="icon_select" [(ngModel)]="user.icon_select">
+      <md-radio-button *ngIf="user.github_id" value="github">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        Github
+        <img src="{{user.github_icon}}" width="48">
+      </md-radio-button>
+      <md-radio-button *ngIf="user.twitter_id" value="twitter">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        Twitter
+        <img src="{{user.twitter_icon}}" width="48">
+      </md-radio-button>
+    </md-radio-group>
+
+    <div style="text-align:center">
+      <button md-raised-button color="primary" (click)="onSubmit()">
+        更新
+      </button>
+    </div>
+  </form>
+
+  <h2>ログイン情報</h2>
+
+  <h3>Github</h3>
+  <div *ngIf="user.github_id">
+    認証済み<br>
+    <button md-raised-button class="github-login-button" (click)="onDeleteGithub()">連携を解除する</button>
+  </div>
+  <div *ngIf="!user.github_id">
+    未認証<br>
+    <button md-raised-button class="github-login-button" (click)="onAddGithub()">Githubと連携</button>
+  </div>
+
+  <h3>Twitter</h3>
+  <div *ngIf="user.twitter_id">
+    認証済み<br>
+    <button md-raised-button class="twitter-login-button" (click)="onDeleteTwitter()">連携を解除する</button>
+  </div>
+  <div *ngIf="!user.twitter_id">
+    未認証<br>
+    <button md-raised-button class="twitter-login-button" (click)="onAddTwitter()">Twitterと連携</button>
+  </div>
+
+  <h2 style="margin-top: 300px">退会</h2>
+  <button md-raised-button color="warn" (click)="onWithdraw()">退会する</button>
+</div>

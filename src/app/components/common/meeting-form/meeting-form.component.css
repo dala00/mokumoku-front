@@ -1,0 +1,20 @@
+form {
+  padding: 16px 8px;
+}
+
+md2-datepicker {
+  min-width: 180px;
+}
+
+ul {
+  padding-left: 0;
+  display: -webkit-flex;
+  display: flex;
+  list-style: none;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+li {
+  margin: 0px 4px;
+}

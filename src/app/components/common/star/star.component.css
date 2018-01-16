@@ -1,0 +1,16 @@
+button {
+  padding: 0;
+  min-width: 36px;
+}
+
+i {
+  color: #9E9E9E;
+}
+
+i.active {
+  color: #FFC107;
+}
+
+span {
+  font-size: 12px;
+}

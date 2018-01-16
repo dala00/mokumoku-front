@@ -1,0 +1,11 @@
+<md-toolbar color="primary">
+  <span>編集する</span>
+</md-toolbar>
+
+<app-meeting-form
+  *ngIf="meeting"
+  [meeting]="meeting"
+  submitLabel="更新"
+  (onSubmit)="onSubmit($event)"
+></app-meeting-form>
+

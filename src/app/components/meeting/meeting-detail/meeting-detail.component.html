@@ -1,0 +1,144 @@
+<div *ngIf="meeting">
+  <div class="mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text">{{meeting.name}}</h1>
+      <div class="mdl-card__subtitle-text">
+        <app-user-icon [user]="meeting.user" width="24"></app-user-icon>
+        <a [routerLink]="['/user', meeting.user_id]">
+          {{meeting.user.name}}
+        </a>
+      </div>
+      <div class="mdl-card__subtitle-text">
+        {{meeting.start_time | moment}} to {{meeting.end_time | moment}}
+        <span *ngIf="!meeting.closed">
+         終了予定
+        </span>
+        <span *ngIf="meeting.closed" class="closed">closed</span>
+      </div>
+      <div class="mdl-card__subtitle-text">
+        <app-tags [tags]="meeting.tags" [link]="true"></app-tags>
+      </div>
+    </div>
+
+    <div class="mdl-card__text mdl-card--border">
+      <h2>概要</h2>
+      <div innerHTML="{{meeting.body | markdown | nofollow}}"></div>
+    </div>
+
+    <div class="mdl-card__text mdl-card--border">
+      <h2>目標</h2>
+      <div innerHTML="{{meeting.objective | markdown | nofollow}}"></div>
+    </div>
+
+    <div class="mdl-card__text mdl-card--border">
+      <h2>経過</h2>
+
+      <div id="posts">
+        <div *ngFor="let meetingPost of meeting.meeting_posts" class="post">
+          <div class="date">{{meetingPost.created | moment}}</div>
+          <div class="body" innerHTML="{{meetingPost.body | markdown | nofollow}}"></div>
+          <div *ngIf="user && user.id == meeting.user_id" class="mdl-card__menu">
+            <span *ngIf="meetingPost.private" class="private">private</span>
+            <button md-icon-button [mdMenuTriggerFor]="detailMenu">
+              <md-icon>more_vert</md-icon>
+            </button>
+            <md-menu #detailMenu="mdMenu">
+                <button md-menu-item routerLink="/meeting-post/edit/{{meetingPost.id}}">編集する</button>
+                <button md-menu-item *ngIf="!meetingPost.private" (click)="setPostPrivate(meetingPost.id, true)">非公開にする</button>
+                <button md-menu-item *ngIf="meetingPost.private" (click)="setPostPrivate(meetingPost.id, false)">公開する</button>
+                <button md-menu-item (click)="onPostDeleteClick(meetingPost.id)">削除</button>
+            </md-menu>
+          </div>
+        </div>
+      </div>
+
+      <form *ngIf="!meeting.closed && user && meeting.user_id == user.id">
+        <div>
+          <textarea
+            appSimplemde
+            name="meeting_post_body"
+            [(ngModel)]="meetingPost.body"
+            placeholder="経過詳細を投稿"
+            required="true"
+            rows="4"
+          ></textarea>
+        </div>
+        <div>
+          <md-checkbox name="is_close" [(ngModel)]="isClose">
+            終了する
+          </md-checkbox>
+        </div>
+        <div style="text-align:center">
+          <button md-raised-button color="primary" (click)="onMeetingPostSubmit()">
+            投稿
+          </button>
+        </div>
+      </form>
+
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <app-star
+        [meeting_id]="meeting.id"
+        [active]="meeting.user_star ? true : false"
+        [count]="meeting.star_count"
+        [showCount]="true"
+        style="margin-bottom: 4px;"
+      ></app-star>
+      <app-social-buttons></app-social-buttons>
+    </div>
+    <div *ngIf="user && user.id == meeting.user_id" class="mdl-card__menu">
+      <span *ngIf="meeting.private" class="private">private</span>
+      <button md-icon-button [mdMenuTriggerFor]="detailMenu">
+        <md-icon>more_vert</md-icon>
+      </button>
+      <md-menu #detailMenu="mdMenu">
+          <button md-menu-item routerLink="/meeting/edit/{{meeting.id}}">編集する</button>
+          <button md-menu-item *ngIf="!meeting.private" (click)="setPrivate(true)">非公開にする</button>
+          <button md-menu-item *ngIf="meeting.private" (click)="setPrivate(false)">公開する</button>
+          <button md-menu-item (click)="onDeleteClick()">削除</button>
+      </md-menu>
+    </div>
+  </div>
+
+  <div id="comment-container" class="mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__text">
+      <h2>コメント</h2>
+    </div>
+    <div class="mdl-card__text mdl-card--border">
+      <div *ngFor="let meetingComment of meeting.meeting_comments" class="meeting-comment">
+        <ul class="demo-list-two mdl-list">
+          <li class="mdl-list__item mdl-list__item--two-line">
+            <span class="mdl-list__item-primary-content">
+              <a routerLink="/user/{{meetingComment.user.id}}">
+                <i class="mdl-list__item-avatar">
+                  <app-user-icon [user]="meetingComment.user"></app-user-icon>
+                </i>
+                <span>{{meetingComment.user.name}}</span>
+              </a>
+              <span class="mdl-list__item-sub-title">{{meetingComment.created | moment}}</span>
+            </span>
+            <span *ngIf="user && meetingComment.user.id == user.id" class="mdl-list__item-secondary-action">
+              <button md-icon-button [mdMenuTriggerFor]="detailMenu">
+                <md-icon>more_vert</md-icon>
+              </button>
+              <md-menu #detailMenu="mdMenu">
+                  <button md-menu-item (click)="onCommentDeleteClick(meetingComment.id)">削除</button>
+              </md-menu>
+            </span>
+          </li>
+        </ul>
+        <div class="body" innerHTML="{{meetingComment.body | paragraph}}"></div>
+      </div>
+    </div>
+    <form *ngIf="user">
+      <md-input-container style="width:100%">
+        <textarea mdInput name="meeting_comment_body" [(ngModel)]="meetingComment.body" placeholder="コメント" required="true" rows="4"></textarea>
+      </md-input-container>
+      <div style="text-align:center">
+        <button md-raised-button color="primary" (click)="onMeetingCommentSubmit()">
+          コメントする
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

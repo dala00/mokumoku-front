@@ -1,0 +1,6 @@
+<a [routerLink]="['/user', user.id]">
+  <img *ngIf="user.icon_select == 'github' && user.github_icon" src="{{user.github_icon}}" width="{{width}}">
+  <img *ngIf="user.icon_select == 'twitter' && user.twitter_icon" src="{{user.twitter_icon}}" width="{{width}}">
+  <i *ngIf="!user.icon_select" class="material-icons mdl-list__item-avatar">person</i>
+</a>
+

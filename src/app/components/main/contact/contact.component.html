@@ -1,0 +1,24 @@
+<h2>お問い合わせ</h2>
+
+<form>
+  <md-input-container>
+    <input mdInput placeholder="お名前" name="name" [(ngModel)]="contact.name" [required]="true">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="email" placeholder="メールアドレス" name="email" [(ngModel)]="contact.email" [required]="true">
+  </md-input-container>
+
+  <md-input-container>
+    <textarea
+      mdInput
+      placeholder="お問い合わせ内容"
+      rows="4"
+      name="body"
+      [(ngModel)]="contact.body"
+      [required]="true"
+    ></textarea>
+  </md-input-container>
+
+  <button md-raised-button (click)="onSubmit()">送信</button>
+</form>

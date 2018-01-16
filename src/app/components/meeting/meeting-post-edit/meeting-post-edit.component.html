@@ -1,0 +1,21 @@
+<div *ngIf="meetingPost">
+  <h3>{{meetingPost.meeting.name}}の経過を編集</h3>
+
+  <form>
+    <div>
+      <textarea
+        appSimplemde
+        name="meeting_post_body"
+        [(ngModel)]="meetingPost.body"
+        placeholder="経過詳細を投稿"
+        required="true"
+        rows="8"
+      ></textarea>
+    </div>
+    <div style="text-align:center">
+      <button md-raised-button color="primary" (click)="onSubmit()">
+        更新
+      </button>
+    </div>
+  </form>
+</div>

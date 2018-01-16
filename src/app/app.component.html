@@ -1,0 +1,31 @@
+<div class="mdl-layout mdl-js-layout container">
+  <header class="mdl-layout__header mdl-layout__header--scroll">
+    <div class="mdl-layout__header-row">
+      <a class="mdl-layout-title" routerLink="">{{title}} α ver.</a>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+        <button md-raised-button color="primary" routerLink="/meeting/add" *ngIf="user">開催する</button>
+        <app-signin *ngIf="!user"></app-signin>
+        <app-user-menu *ngIf="user" [user]="user"></app-user-menu>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <footer class="mdl-mega-footer">
+    <div class="mdl-mega-footer__bottom-section">
+      <div class="mdl-logo">一人もくもく会</div>
+      <ul class="mdl-mega-footer__link-list">
+        <li><a href="https://bitbucket.org/alphabrend/mokumoku_front/issues?status=new&status=open" target="_blank">課題管理</a></li>
+        <li><a routerLink="/contact">お問い合わせ</a></li>
+        <li><a routerLink="/page/privacy">プライバシーポリシー</a></li>
+        <li>&copy; 2017 Alphabrend LLC</li>
+      </ul>
+    </div>
+  </footer>
+</div>

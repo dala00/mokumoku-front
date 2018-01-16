@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+.mdl-layout__container {
+  position: inherit;
+}
+
+.container > main {
+  width: 100%;
+  max-width: 1190px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+#contents {
+  padding: 10px;
+}
+
+.mdl-layout__header-row, .mdl-mega-footer__bottom-section {
+  max-width: 1190px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mdl-layout__header-row {
+  padding-left: 10px;
+}
+
+.mdl-layout__drawer-button {
+  display: none;
+}
+
+/*
+@media screen and (max-width: 1024px) {
+  .mdl-layout__header-row {
+    padding-left: 80px;
+  }
+
+  .mdl-layout__drawer-button {
+    display: block;
+  }
+}
+*/
+
+.mdl-card__text {
+  width: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  color: rgba(0,0,0,.54);
+  font-size: 1rem;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.mdl-card__text.mdl-card--border {
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+span.private {
+  color: #fff;
+  background-color: #f00;
+  font-weight: inherit;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+span.closed {
+  color: #fff;
+  background-color: #616161;
+  font-weight: normal;
+  border-radius: 8px;
+  padding: 0px 10px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.editor-toolbar.fullscreen {
+  height: 64px;
+}
+
+.CodeMirror-fullscreen, .editor-preview-side {
+  top: 64px;
+}

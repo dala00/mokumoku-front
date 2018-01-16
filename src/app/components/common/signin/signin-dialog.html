@@ -1,0 +1,18 @@
+<h4 class="mdl-dialog__title">Sign In</h4>
+<div class="mdl-dialog__content">
+  <p>
+    <a href="{{data.get('githubLoginUrl')}}" id="github-login-button" class="mdl-button mdl-js-button mdl-button--raised">
+      <i class="fa fa-github" aria-hidden="true"></i>
+      Sign in with Github
+    </a>
+  </p>
+  <p>
+    <a href="{{data.get('twitterLoginUrl')}}" id="twitter-login-button" class="mdl-button mdl-js-button mdl-button--raised">
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+      Sign in with Twitter
+    </a>
+  </p>
+</div>
+<div class="mdl-dialog__actions">
+  <button type="button" class="mdl-button close" (click)="dialogRef.close('yes')">Close</button>
+</div>

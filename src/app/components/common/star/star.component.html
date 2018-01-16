@@ -1,0 +1,7 @@
+<span *ngIf="user">
+  <button md-button (click)="onClick()">
+    <i *ngIf="active" class="material-icons active">star</i>
+    <i *ngIf="!active" class="material-icons">star</i>
+    <span *ngIf="showCount">{{count}}</span>
+  </button>
+</span>

@@ -1,0 +1,7 @@
+.social-buttons-container {
+  display: flex;
+}
+
+.social-buttons-container > * {
+  margin-right: 16px;
+}

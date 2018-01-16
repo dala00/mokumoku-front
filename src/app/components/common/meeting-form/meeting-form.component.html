@@ -1,0 +1,71 @@
+<form>
+  <md-input-container style="width:100%">
+    <input mdInput placeholder="タイトル" required="true" name="name" [(ngModel)]="meeting.name">
+  </md-input-container>
+
+  <ul>
+    <li>
+      <md2-datepicker
+        name="start_time"
+        type="datetime"
+        required="true"
+        placeholder="開始日時"
+        format="YYYY/MM/DD HH:mm"
+        [(ngModel)]="meeting.start_time"
+      ></md2-datepicker>
+    </li>
+    <li>to</li>
+    <li>
+      <md2-datepicker
+        name="end_time"
+        type="datetime"
+        required="true"
+        placeholder="終了日時"
+        format="YYYY/MM/DD HH:mm"
+        [(ngModel)]="meeting.end_time"
+      ></md2-datepicker>
+    </li>
+  </ul>
+
+  <tag-input
+    name="tags"
+    [(ngModel)]="tags"
+    placeholder="タグ"
+    secondaryPlaceholder="タグを追加"
+    (onAdd)="onTagChanged($event)"
+    (onRemove)="onTagChanged($event)"
+    (onTextChange)="onTagTextChange($event)"
+  >
+    <tag-input-dropdown [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+  </tag-input>
+
+  <label style="display:block; margin-top: 16px">内容</label>
+  <div>
+    <textarea
+      appSimplemde
+      name="body"
+      [(ngModel)]="meeting.body"
+      placeholder="内容"
+      required="true"
+      rows="8"
+    ></textarea>
+  </div>
+
+  <label>目標</label>
+  <div>
+    <textarea
+      appSimplemde
+      name="objective"
+      [(ngModel)]="meeting.objective"
+      placeholder="目標"
+      required="true"
+      rows="8"
+    ></textarea>
+  </div>
+
+  <div style="text-align:center">
+    <button md-raised-button color="primary" (click)="onSubmitClicked()">
+      {{submitLabel}}
+    </button>
+  </div>
+</form>

@@ -1,0 +1,11 @@
+<h2>{{title}}</h2>
+<div style="text-align:right">
+  <app-search></app-search>
+</div>
+<meetings
+  infinite-scroll
+  (scrolled)="onScrollDown()"
+  [meetings]="meetings"
+></meetings>
+
+<md-progress-spinner *ngIf="loading" mode="indeterminate"></md-progress-spinner>

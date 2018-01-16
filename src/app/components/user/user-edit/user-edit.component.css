@@ -1,0 +1,16 @@
+md-input-container {
+  width: 100%;
+}
+
+md-radio-button {
+  display: block;
+}
+
+.github-login-button {
+  background-color: #E0E0E0;
+}
+
+.twitter-login-button {
+  background-color: #2979FF;
+  color: #FFF;
+}

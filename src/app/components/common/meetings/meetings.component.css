@@ -1,0 +1,23 @@
+li a {
+  width: 90%;
+}
+
+.demo-list-three {
+  width: 100%;
+}
+
+span.star {
+  color: #212121;
+  font-size: 12px;
+}
+
+span.star i {
+  color: #FFC107;
+  font-size: 16px;
+}
+
+.mdl-list__item-text-body {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

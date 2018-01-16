@@ -1,0 +1,26 @@
+@media screen and (max-width: 1024px) {
+  .mdl-layout__header {
+    display: flex;
+  }
+}
+
+.mdl-layout__header .mdl-layout__drawer-button {
+  position: relative;
+}
+
+.mdl-layout__header a.mdl-layout-title {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page-content {
+  padding: 3px;
+}
+
+.mdl-mega-footer {
+  padding: 0 40px;
+}
+
+.mdl-mega-footer__link-list {
+  margin-bottom: 0;
+}

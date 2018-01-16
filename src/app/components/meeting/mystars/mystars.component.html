@@ -1,0 +1,9 @@
+<h2>スターをつけた一覧</h2>
+<meetings
+  infinite-scroll
+  (scrolled)="onScrollDown()"
+  [meetings]="meetings"
+></meetings>
+
+<md-progress-spinner *ngIf="loading" mode="indeterminate"></md-progress-spinner>
+

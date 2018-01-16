@@ -1,0 +1,58 @@
+h1 {
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 0;
+  margin-bottom: 32px;
+  color: #000;
+}
+
+.mdl-card {
+  width:100%;
+}
+
+.mdl-card__title {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mdl-card__title-text {
+  align-self: flex-start;
+}
+
+#posts .post {
+  position: relative;
+}
+
+#posts .post .body {
+  box-sizing: border-box;
+  padding: 16px 0;
+  margin: 16px 16px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+#posts .post:last-child .body {
+  border: 0;
+}
+
+form {
+  background-color: #E8EAF6;
+  padding: 16px;
+}
+
+#comment-container {
+  margin-top: 16px;
+}
+
+.meeting-comment ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mdl-list__item {
+  padding-left: 0;
+}

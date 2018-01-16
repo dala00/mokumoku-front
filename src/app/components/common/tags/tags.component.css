@@ -1,0 +1,20 @@
+.small .mdl-chip__text {
+  font-size: 11px;
+  vertical-align: inherit;
+}
+
+.mdl-chip.small {
+  line-height: 16px;
+  height: 16px;
+  margin: 0px 2px;
+  border-radius: 8px;
+}
+
+.mdl-chip.normal {
+  margin-right: 4px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

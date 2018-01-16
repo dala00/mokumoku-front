@@ -1,0 +1,24 @@
+<ul class="demo-list-three mdl-list">
+  <li *ngFor="let meeting of meetings" class="mdl-list__item mdl-list__item--three-line">
+    <a routerLink="/meeting/{{meeting.id}}" class="mdl-list__item-primary-content">
+      <i class="mdl-list__item-avatar">
+        <app-user-icon [user]="meeting.user"></app-user-icon>
+      </i>
+      <span>{{meeting.name}}</span>
+      <span *ngIf="meeting.closed" class="closed">closed</span>
+      <app-tags [tags]="meeting.tags" size="small"></app-tags>
+      <span class="star"><i class="material-icons">star</i>{{meeting.star_count}}</span>
+      <span class="mdl-list__item-text-body mdl-layout--large-screen-only">
+        {{meeting.body | markdown | striptags | truncate:128}}
+      </span>
+    </a>
+    <span class="mdl-list__item-secondary-content">
+      <app-star
+        *ngIf="showStarButton"
+        meeting_id="{{meeting.id}}"
+        [active]="meeting.user_star ? true : false"
+        [count]="0"
+      ></app-star>
+    </span>
+  </li>
+</ul>

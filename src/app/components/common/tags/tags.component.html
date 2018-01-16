@@ -1,0 +1,4 @@
+<span *ngFor="let tag of tags" class="mdl-chip {{size}}">
+    <span *ngIf="!link" class="mdl-chip__text">{{tag.name}}</span>
+    <a *ngIf="link" [routerLink]="['/meeting/search', {tag_id: tag.id}]" class="mdl-chip__text">{{tag.name}}</a>
+</span>

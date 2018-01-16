@@ -1,0 +1,11 @@
+<a class="mdl-navigation__link" href="javascript:void(0)" [mdMenuTriggerFor]="menu">
+  {{user.name}}
+  <md-icon> keyboard_arrow_down </md-icon>
+</a>
+
+<md-menu x-position="after" #menu="mdMenu">
+  <button md-menu-item [routerLink]="['/user', user.id]"> プロフィール </button>
+  <button md-menu-item [routerLink]="['/meeting/search', {user_id: user.id}]"> 開催一覧 </button>
+  <button md-menu-item routerLink="/mystars"> つけたスター一覧 </button>
+  <button md-menu-item (click)="onSignOutClick()"> サインアウト </button>
+</md-menu>
